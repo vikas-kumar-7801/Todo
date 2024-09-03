@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="icon" href="https://res.cdn.office.net/todo/2151454_2.125.2/icons/logo.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+*{
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+img{
+  height:1%;
+  width:1%;
+}
+
+.strikeThrough{
+  text-decoration: line-through;
+}
+
+body{
+  background:linear-gradient(to bottom right,rgb(209, 173, 230), lightblue) ;
+  min-height: 100vh;
+  height:fit-content;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+  justify-content: start;
+  overflow-x:hidden;
+}
+
+.main-Container{
+  /* background-color:rgb(192, 237, 192); */
+  /* background-color: rgb(244, 244, 224, 0.85); */
+  background:linear-gradient(to bottom right, lightblue,rgb(209, 173, 230)) ;
+  box-shadow: 1px 1px 10px grey;
+  margin: 5%;
+  min-width: 60%;
+  max-width: 70%;
+  height: fit-content;
+  padding: 10px 20px;
+  text-overflow: hidden;
+  border-radius: 10px;
+}
+
+.main-Container h1{
+  font-size: 3.5rem;
+}
+
+.inputContainer{
+  display: flex;
+  border-radius:10px ;
+  background-color: white;
+  margin: 10px 0 15px 0;
+}
+
+#task{
+  padding: 10px;
+  outline: none;
+  border: 0;
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px ;
+  font-size: 20px;
+  flex-grow: 1;
+}
+
+#date{
+  padding: 10px;
+  outline: none;
+  border: 0;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.527);
+}
+
+#time{
+  padding: 10px;
+  outline: none;
+  border: 0;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.527);
+
+}
+
+#addBtn{
+  padding: 10px;
+  outline: none;
+  border: 0;
+  font-size: 20px !important;
+  background-color: rgb(244, 88, 88);
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px grey;
+}
+
+#addBtn:active{
+  transform: scale(0.98); 
+  /* Scaling button to 0.98 to its original size */ 
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+  /* Lowering the shadow */ 
+  background-color: lightgreen;
+}
+
+#addBtn span {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  width: 60px;
+}
+
+.js-div{
+  background-color: white;
+  border-radius: 10px;
+  margin: 1%;
+  padding: 6px;
+  font-size: 22px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.js-spanContainer{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  flex-grow: 1;
+}
+
+.js-spanContainer div span:hover{
+  color: black;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.boxL{
+  flex-grow: 1;
+  color: rgba(0, 0, 0, 0.636);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: start;
+  padding-left: 8px;
+}
+
+.boxDT {
+  display: flex;
+  text-align: center;
+  align-items: end;
+  justify-content: end;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.527);
+}
+
+.boxDT span {
+  padding: 0 10px;
+  color: grey;
+}
+
+.boxDT button{
+  border: 0;
+  background-color: inherit;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 480px) {  
+  body{
+    background:linear-gradient(to bottom right,rgb(209, 173, 230), lightblue) ;
+    min-height: 100vh;
+    height:fit-content;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+    justify-content: start;
+  }
+  
+  .main-Container{
+    background:linear-gradient(to bottom right, lightblue,rgb(209, 173, 230)) ;
+    box-shadow: 1px 1px 10px grey;
+    min-width: 87%;
+    height: fit-content;
+    padding: 10px 10px;
+    text-overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .main-Container h1{
+    font-size: 3rem;
+  }
+  
+  .inputContainer{
+    display: grid;
+    border-radius:10px ;
+    background-color: white;
+    margin: 10px 0 15px 0;
+  }
+  
+  #task{
+    padding: 10px;
+    outline: none;
+    border: 0;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    font-size: 20px;
+  }
+  
+  #date{
+    padding: 10px;
+    outline: none;
+    border: 0;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.527);
+  }
+  
+  #time{
+    padding: 10px;
+    outline: none;
+    border: 0;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.527);
+  
+  }
+  
+  #addBtn{
+    padding: 10px;
+    outline: none;
+    border: 0;
+    font-size: 20px !important;
+    background-color: rgb(244, 88, 88);
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px grey;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #addBtn:active{
+    transform: scale(0.98); 
+    /* Scaling button to 0.98 to its original size */ 
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+    /* Lowering the shadow */ 
+    background-color: lightgreen;
+  }
+  
+  #addBtn span {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    width: 60px;
+  }
+  
+  .js-div{
+    background-color: white;
+    border-radius: 10px;
+    margin: 1%;
+    padding: 6px 1px;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;    
+
+  }
+  
+  .js-spanContainer{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .js-spanContainer div span:hover{
+    color: black;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  
+  .boxL{
+    flex-grow: 1;
+    color: rgba(0, 0, 0, 0.636);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  .boxDT {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: end;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.527);
+    /* border: 1px solid black; */
+
+  }
+
+  .span{
+    display: grid;
+    text-align: end;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .boxDT span {
+    padding: 0 4px;
+    color: grey;
+  }
+  
+  .boxDT button{
+    border: 0;
+    background-color: inherit;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+}
+</style>
+</head>
+<body>
+  <div class="main-Container">
+    <header>
+    
+      <h1>To-Do List</h1>
+    
+    </header>
+    <main>
+      
+      <div class="inputContainer">
+        <input type="text" id="task" onfocus="defaultDate();defaulttime();" required placeholder="Add Task">
+        
+        <input type="date" id="date" placeholder="DD-MM-YYYY">
+        
+        <input type="time" id="time">
+
+        <button onclick="addTask()" id="addBtn"><span class="material-symbols-outlined">add</span></button>
+      </div>
+
+      <div id="displayContainer"></div>
+
+
+    
+    </main>
+  </div>
+  
+  <script>
+	let todoList =['Go for lunch', 'Wash my car', 'Meditation'];
+let todoDate =['02-09-2024','02-09-2024','02-09-2024'];
+let todoTime =['22:09','22:09','22:09'];
+let i;
+let date = document.querySelector('#date');
+let task = document.querySelector('#task');
+let time = document.querySelector('#time');
+
+
+displayItems();
+
+function addTask() {
+  if (task.value ==='') {
+    alert('Please Enter Task')
+  }else if (date.value === '') {
+    date.value = todayDate();
+  }else{
+    console.log(task.value);
+    console.log(date.value);
+    console.log(time.value);
+    todoList.push(task.value);  
+    todoDate.push(date.value);  
+    todoTime.push(time.value);  
+  }
+  
+  task.value ='';
+  displayItems();
+}
+
+function defaultDate() {
+  date.value = todayDate();
+}
+
+function todayDate() {
+  let finalDate;
+  let dateNumber = new Date().getDate();
+  let dateMonth = new Date().getMonth()+1;
+  let dateYear = new Date().getFullYear();
+  
+  if (dateNumber.toString().length === 1) {
+    dateNumber=`0${dateNumber}`;
+  }
+  
+  if (dateMonth.toString().length === 1) {
+    dateMonth=`0${dateMonth}`;  
+  }
+  
+  finalDate = `${dateYear}-${dateMonth}-${dateNumber}`
+  return finalDate;
+}
+
+function defaulttime() {
+  time.value = CurrentTime();
+}
+
+function CurrentTime() {
+  let finalTime;
+  let timeHours = new Date().getHours();
+  let timeMinutes = new Date().getMinutes();
+  if (timeHours.toString().length === 1) {
+    timeHours=`0${timeHours}`;
+  }
+  if (timeMinutes.toString().length === 1) {
+    timeMinutes=`0${timeMinutes}`;
+  }
+  
+  finalTime = `${timeHours}:${timeMinutes}`;
+  return finalTime;
+}
+
+
+
+
+function displayItems() {
+  let displayContainer = document.querySelector('#displayContainer');
+  let newHtml = '';
+
+  for (let i = 0; i < todoList.length; i++) {
+    newHtml +=`
+      <div class='js-div'>
+ 
+
+      <div class='js-spanContainer'>
+        <div class='boxL'>
+          <span id='js-todoList'>${todoList[i]}</span>
+        </div>
+        <div class='boxDT'>
+          <div class='span'>
+            <span id='js-todoDate'>${todoDate[i]}</span>
+            <span id='js-todoTime'>${todoTime[i]}</span>
+          </div>
+          <div class='close'>
+            <button onclick=
+            'todoList.splice(${i}, 1);todoDate.splice(${i}, 1);todoTime.splice(${i}, 1);displayItems();' id='close'>
+            <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+ 
+
+
+      </div>
+    `;
+
+  }
+
+  displayContainer.innerHTML = newHtml;
+}
+
+
+  </script>
+</body>
+</html>
